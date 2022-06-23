@@ -1,0 +1,38 @@
+<!-- 投稿一覧（BOOK） -->
+<%= notice %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+<%= render 'books/index', user: @user, book_new: @books %>
+
+<div class="col-md-8 offset-md-1">
+  <h2>Books</h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Opinion</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @book.each do |book| %>
+      <tr>
+        <td>
+          <%= link_to user_path(book.user.id) do %>
+          <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+          <% end %>
+        </td>
+        <td>
+           <p><%= link_to book.title, book_path(book.id) %></p>
+        </td>
+        <td>
+           <p><%= book.body %></p>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+
